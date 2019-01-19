@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>正向查询-通过Book查询PuBlisher</h2>
+    <h3>书名:{{ book.title }}</h3>
+    <h3>出版时间:{{ book.publicate_date }}</h3>
+    <h3>出版社:{{ publisher.name }}</h3>
+    <h3>地址L:{{ publisher.city }}{{ publisher.address }}</h3>
+    <h3>
+        网址:
+        <a href="{{ publisher.website }}">
+            {{ publisher.website }}
+        </a>
+    </h3>
+    <h2>反向查询-通过Publisher的book_set查询所有书籍</h2>
+    <h3>出版社:{{ publisher.name }}</h3>
+    {% for book in books %}
+    <h3>书籍:{{ book.title }}</h3>
+    <h3>出版时间:{{ book.publicate_date }}</h3>
+    {% endfor %}
+</body>
+</html>

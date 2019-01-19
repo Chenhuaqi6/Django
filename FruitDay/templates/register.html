@@ -1,0 +1,67 @@
+{% extends 'login.html' %}
+{% block style %}
+    <style>
+        .right{
+            margin-top: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    注册会员
+{% endblock %}
+
+{% block anchor %}
+    <a href="/login">会员登录</a>
+{% endblock %}
+
+{% block form %}
+    <form action="/register/" method="post">
+        {% csrf_token %}
+    <!--1.手机号-->
+         <div class="form-line">
+             <p>手机号</p>
+             <input class="uinput" type="text" name="uphone">
+             <div>{{ errMsg }}</div>
+         </div>
+    <!--2.密码-->
+        <div class="form-line">
+             <p>密码</p>
+             <input class="uinput" type="password" name="upwd">
+         </div>
+    <!--3.确认密码-->
+        <div class="form-line">
+             <p>确认密码</p>
+             <input class="uinput" type="password" id="cpwd">
+         </div>
+    <!--4.用户名-->
+        <div class="form-line">
+             <p>用户名</p>
+             <input class="uinput" type="text" name="uname">
+         </div>
+    <!--5.邮箱-->
+        <div class="form-line">
+             <p>邮箱</p>
+             <input class="uinput" type="email" name="uemail">
+         </div>
+    <!--6.注册and会员登录-->
+         <div class="form-line">
+             <p></p>
+             <div>
+                 <input class="issave" type="checkbox" name="savepwd">记住密码
+                 <p>
+                     <a href="">忘记密码?</a>
+                     <a href="">快捷登录</a>
+                 </p>
+             </div>
+         </div>
+                    <!--第四行-->
+        <div class="form-line">
+            <p></p>
+            <div>
+                <input type="submit" value="注册" class="loginBtn btn">
+                <a href="/login" class="registBtn btn">会员登录</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                $.ajax({
+                    url:'http://127.0.0.1:5000/03-jq-cross',
+                    type:'get',
+                    dataType:'jsonp',
+                    success:function (data) {
+                        alert("前端处理后端的数据:"+data)
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="btn">发送跨域请求</button>
+</body>
+</html>

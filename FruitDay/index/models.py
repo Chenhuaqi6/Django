@@ -1,0 +1,20 @@
+from django.db import models
+
+# Create your models here.
+
+
+class Users(models.Model):
+    uphone = models.CharField(max_length=11,verbose_name='手机号')
+    upwd = models.CharField(max_length=200,verbose_name='密码')
+    uemail = models.CharField(max_length=245,verbose_name='电子邮箱')
+    uname = models.CharField(max_length=20,verbose_name='用户名')
+    isActive = models.BooleanField(default=True,verbose_name='活动用户')
+
+    def __str__(self):
+        return self.uname
+
+    class Meta:
+        db_table = 'users'
+        verbose_name = '用户信息'
+        verbose_name_plural = verbose_name
+

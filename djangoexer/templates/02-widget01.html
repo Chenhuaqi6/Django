@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li{
+            float:left;
+            margin-right: 8px;
+        }
+        .form-control{
+            width: 100px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<form action="/02-widget01/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="提交">
+</form>
+
+</body>
+</html>

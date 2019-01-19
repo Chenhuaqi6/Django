@@ -1,0 +1,283 @@
+/*页面基础样式*/
+body{
+    font: 12px "微软雅黑","黑体";
+    color: #9a9a9a;
+
+}
+
+/*清除默认样式*/
+body,h1,h2,h3,h4,h5,h6,p,ul,ol{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #9a9a9a;
+    
+}
+a:hover{
+    color: #64a131;
+}
+/*页面整体宽度和居中效果*/
+#container{
+    width:990px ;
+    margin: 0 auto;
+    
+
+}
+
+/*1.导航*/
+#nav{
+    background: #eee;
+    height: 30px;
+    line-height: 30px;
+}
+#nav .rightNav{
+    float: right;
+}
+
+#nav .rightNav>li{
+    float: left;
+    padding: 0 5px;
+    /* border-right: 1px solid #9a9a9a;
+    margin-right: 10px;
+    margin-top: 7px; */
+
+}
+
+#nav .rightNav>li>b{
+    margin-right: 10px;
+    border-left: 1px solid #9a9a9a;
+}
+
+/*左侧导航栏*/
+#nav .leftNav>li{
+    float: left;
+    padding-left:10px;
+}
+
+#nav .leftNav>li>i{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top: 6px solid black;
+    position: relative;
+    top: 4px;
+}
+/*下拉菜单*/
+/*父相子绝*/
+#nav .address{
+    position: relative;
+}
+#nav .select{
+    position: absolute;
+    display: none;
+    z-index: 100;
+    color: #000;
+
+   
+    /*修改鼠标形状*/
+    cursor: pointer;
+}
+
+#nav .address:hover .select{
+    display: block;
+    background: rgba(255,0,0,.5);
+}
+#nav .select>li:hover{
+    font-weight: bold;
+}
+
+/*2.横幅区域*/
+#banner{
+    margin: 15px 0;
+    height: 207px;
+    position: relative;
+}
+#banner img{
+    width: 100%;
+}
+/*除第一张图片外,其他图片元素都隐藏*/
+#banner img:not(:first-child){
+    display: none;
+}
+#banner .imgNav{
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+}
+
+#banner li{
+    float: left;
+    width: 20px;
+    height: 20px;
+    border-radius:50%;
+    color: #fff;
+    background: gray; 
+    text-align: center;
+    line-height: 20px;
+    margin: 0 10px;
+}
+/*第一张图片默认显示,索引背景色为红色*/
+#banner li:first-child{
+    background: red;
+
+}
+/*推荐*/
+#commend{
+    /*解决行内元素由于换行导致的水平间隙*/
+    font-size: 0;
+    height: 112px;
+}
+
+#commend img{
+    width: 240px;
+    margin-right: 10px;
+    /* float: left; */
+}
+
+#commend .lastImg{
+    margin: 0;
+}
+
+/*4.主体*/
+#main{
+    margin-top: 25px;
+}
+/*4.1 标题*/
+#main .title{
+    height: 32px;
+    background: #f3f3f3;
+    border: 1px solid #e9e9e9;
+
+}
+
+#main .title>p{
+    float: left;
+    line-height: 32px;
+}
+
+#main p.check-box{
+    width: 132px;
+}
+
+#main p.goods{
+    width: 378px;
+    
+}
+#main p.price{
+    width: 160px;
+    text-align: center;
+}
+#main p.count{
+    width: 80px;
+    text-align: center;
+
+}
+#main p.sum{
+    width: 140px;
+    text-align: center;
+
+}
+#main p.action{
+    width: 85px;
+    text-align: center;
+    cursor: pointer;
+
+
+}
+#main #check All{
+    /*复选框的居中*/
+    vertical-align: middle;
+}
+
+/*4.2 商品展示*/
+#main .g-item{
+    border-top: 2px solid #999;
+    border-bottom: 1px solid #999;
+    padding: 10px 0;
+    /* margin-top:25px;  */
+    /*清除浮动影响*/
+    overflow: hidden;
+    margin-bottom:10px; 
+
+}
+#main .g-item>p{
+    float: left;
+}
+#main .check-box img{
+    width: 80px;
+    height: 80px;
+}
+
+#main .check-box [name=check]{
+    vertical-align: top;
+}
+
+#main p.count>a{
+    float: left;
+    width: 16px;
+    height:18px;
+    border: 1px solid #cacbcb;
+    text-align: center;
+    line-height: 18px;
+    padding: 1px 0;
+}
+
+
+#main p.count>input{
+    float: left;
+    width: 42px;
+    height: 18px;
+    border-left: none;
+    border-right:none;
+    border-top: 1px solid #cacbcb;
+    border-bottom: 1px solid #cacbcb; 
+    text-align: center;
+    font-size:12px;
+    padding: 1px;
+
+}
+
+/*5.底部工具栏*/
+#cart-toolbar{
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    /*块元素浮动之后,宽度不再与父元素一致,由内容决定*/
+    width: 990px;
+    border-top:1px solid #e9e9e9; 
+    line-height: 50px;
+
+}
+
+#cart-toolbar .commit-right{
+    float: right;
+}
+
+#cart-toolbar .commit-right>p{
+    float: left;
+    margin: 0 10px;
+    font-size: 16px;  
+}
+
+#cart-toolbar span{
+    font-weight: bold;
+    color: #e4393c;
+
+}
+
+
+
+#cart-toolbar .submit-btn{
+    background-color: #e4393c;
+    color: #fff;
+    font-size:20px;
+    width: 80px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer; 
+}

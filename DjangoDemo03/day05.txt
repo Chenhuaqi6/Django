@@ -1,0 +1,31 @@
+1.Django ORM
+    1.自定义查询对象 - objects(通过调用自定义方法来直接调用完成)
+        1.声明类EntryManager继承自models.Manager
+            Entry.objects的类型为 ,models.Manager
+            允许在EntryManager中添加自定义函数
+            示例:
+                class EntryManager(models.Manager):
+                    def 函数名(self,自定义参数列表):
+                        ... ...
+                        return ... ...
+        2.使用EntryManager覆盖Models类中原有的objects
+            class Entry(models.Model):
+                objects = EntryManager()
+                name = models.CharField(xxxx)
+        练习:通过自定义的objects类型完成
+            1.查询Author中姓名包含指定字符的信息
+            2.查询Book中出版时间是指定年份的所有信息
+
+            步骤 1.先创建自定义类
+                2.继承自谁就写到谁的里面(objects = EntryManager())
+                3.写方法(def 方法名(self,参数))
+                4.视图里直接调用(对象 = Entry.object.自定义方法(传参))]
+
+2.HttpRequest - 请求对象
+    1.什么是HttpResquest
+        HttpRequest, 在Django中就是请求对象
+        在Django中,请求对象被封装到视图处理函数中的参数里--request
+
+
+
+

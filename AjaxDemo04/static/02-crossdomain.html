@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+
+        function process(data) {
+            $("#flightNO").html(data.flightNO)
+            $("#from").html(data.from)
+            $("#to").html(data.to)
+            $("#time").html(data.time)
+
+        }
+
+        $(function () {
+            $('#btnSend').click(function () {
+                var script = document.createElement('script');
+                script.type = "text/javascript";
+                script.src = "http://127.0.0.1:5000/02-server?callback=process";
+                var body = $("body")[0];
+                body.append(script);
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <button id="btnSend">跨域请求</button>
+    <div>
+        <p>
+            航班号: <span id="flightNO"></span>
+        </p>
+        <p>
+            出发: <span id="from"></span>
+        </p>
+        <p>
+            到达: <span id="to"></span>
+        </p>
+        <p>
+            时间: <span id="time"></span>
+        </p>
+    </div>
+
+</body>
+</html>

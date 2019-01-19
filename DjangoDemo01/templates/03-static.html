@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>通过/static/的方式访问静态文件</h3>
+    <img src="/static/images/DB.png" width="300">
+    <img src="http://localhost:8000/static/images/000.png" width="300">
+    <h3>通过static标签来访问静态资源</h3>
+    {% load static %}
+    <img src="{% static 'images/000.png' %}" width="300">
+    <img src="{% static 'images/DB.png' %}" width="300">
+</body>
+</html>
