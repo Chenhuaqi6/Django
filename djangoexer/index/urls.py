@@ -9,3 +9,11 @@ urlpatterns = [
     url(r'^05-setsession/$',views.set_session),
     url(r'^06-getsession/$',views.get_session),
 ]
+
+#Django中ajax的处理路由
+urlpatterns +=[
+    url(r'^07-ajax-get/$',views.ajax_get),
+    url(r'^08-ajax-params/$',views.ajax_params),
+    url(r'^13-ajax-post/$',views.ajax_post),
+    url(r'^14-ajax-json/$',views.ajax_json),
+]

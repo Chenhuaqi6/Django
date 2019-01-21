@@ -1,7 +1,10 @@
+import json
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.core import serializers
 
 # Create your views here.
 def index(request):
@@ -104,3 +107,73 @@ def modellogin(request):
         else:
             form = LoginModelForm()
             return render(request, 'login.html', locals())
+
+def check_phone(request):
+    uphone = request.POST['uphone']
+
+    uphone = Users.objects.filter(uphone=uphone)
+    if uphone:
+        s = '用户名已经存在'
+    else:
+        s = '用户名可用'
+
+    return HttpResponse(s)
+
+#有关登录用户检查的业务逻辑处理
+def check_login(request):
+    #判断session中是否有登录信息(id,uphone)
+    if 'id'in request.session and 'uphone' in request.session:
+        id = request.session.get('id')
+        uname = Users.objects.get(id = id).uname
+        dic = {
+
+                'loginStatus' : 1,
+                'uname':uname,
+                }
+    else:
+        dic={
+            'loginStatus':0,
+
+        }
+
+    jsonStr = json.dumps(dic)
+    return HttpResponse(jsonStr)
+
+
+
+
+def type_goods(request):
+    all_list = []
+    #先查询所有的GoodsType信息,再循环遍历得到每个goodsType
+    types = GoodsType.objects.all()
+    for type in types:
+        #type表示的是每个商品类型
+        #将type转换成json串
+        type_json = json.dumps(type.to_dict())
+        #获取type对应的所有的商品
+        g_list = type.goods_set.all()
+        #将g_list转换成json串
+        g_list_json = serializers.serialize('json',g_list)
+        #将type_json和g_list_hson封装到字典中
+        dic = {
+            'type':type_json,
+            'goods':g_list_json,
+               }
+        all_list.append(dic)
+    return HttpResponse(json.dumps(all_list))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

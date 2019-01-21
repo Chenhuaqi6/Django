@@ -33,16 +33,6 @@
                 {% block form %}
                 <form action="/login/" method="post">
                     {% csrf_token %}
-                    <!--第一行-->
-{#                    <div class="form-line">#}
-{#                        {{ form.as_p }}#}
-{#                    </div>#}
-{#                    <!--第二行-->#}
-{#                    <div class="form-line">#}
-{#                        <p>密码</p>#}
-{#                        <input class="uinput" type="password" name="upwd" placeholder="请输入6-20位号码">#}
-{#                    </div>#}
-                    <!--循环遍历form-->
                     {% for field in form %}
                         <div class = 'form-line'>
                             <p>{{ field.label }}</p>

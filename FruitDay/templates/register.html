@@ -22,7 +22,7 @@
          <div class="form-line">
              <p>手机号</p>
              <input class="uinput" type="text" name="uphone">
-             <div>{{ errMsg }}</div>
+             <div id="show"></div>
          </div>
     <!--2.密码-->
         <div class="form-line">
@@ -60,8 +60,21 @@
             <p></p>
             <div>
                 <input type="submit" value="注册" class="loginBtn btn">
-                <a href="/login" class="registBtn btn">会员登录</a>
+                <a href="/login/" class="registBtn btn">会员登录</a>
             </div>
         </div>
     </form>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script>
+      $('[name="uphone"]').blur(function () {
+        var parmas = {
+            'uphone':$('[name="uphone"]').val(),
+            'csrfmiddlewaretoken':$('[name = "csrfmiddlewaretoken"]').val()
+        }
+        $.post('/check_phone/',parmas,function (data) {
+            $("#show").html(data)
+        })
+    })
+    
+    </script>
 {% endblock %}

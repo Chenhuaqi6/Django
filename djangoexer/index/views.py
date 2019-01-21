@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import *
 from .forms import *
+import json
+from django.core import serializers
 # Create your views here.
 
 def register_views(request):
@@ -79,4 +81,49 @@ def get_session(request):
     return HttpResponse('UID:%s,UNAME:%s' % (uid,uname))
 
 
+#Django中 ajax 的视图处理
+def ajax_get(request):
+    return HttpResponse('这是Django中的ajx的get请求')
+
+def ajax_params(request):
+    #1.获取以get方式提交的数据
+    uname = request.GET['uname']
+    upwd = request.GET['upwd']
+    #2.将提交回来的数据再拼回去
+    s = '用户名:%s,密码:%s' % (uname,upwd)
+    return HttpResponse(s)
+
+def ajax_post(request):
+    if request.method == 'GET':
+        return render(request,'13-ajax-post.html')
+    else:
+        #接收前端传递过来的uname的值
+        uname = request.POST['uname']
+        return HttpResponse('传递过来的值为:%s' % uname)
+def ajax_json(request):
+    #使用列表嵌套字典响应成json的字符串
+    # list = [
+    #     {
+    #         'name':'wangwc',
+    #         'age':37,
+    #         'gender':'Male',
+    #     },
+    #     {
+    #         'name':'MrsWang',
+    #         'age':46,
+    #         'gender':'Female',
+    #     }
+    # ]
+    # jsonStr = json.dumps(list)
+
+    #将查询结果集的数据响应给前端
+    users = Users.objects.all()
+
+    #由于users是不可以被json序列化的,所以没办法使用json.dumps()
+    # jsonStr = json.dumps(users)
+
+    #使用serializers里的serialize方法 转出json格式数据
+    jsonStr = serializers.serialize('json',users)
+    print(jsonStr)
+    return HttpResponse(jsonStr)
 

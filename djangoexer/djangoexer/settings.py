@@ -124,7 +124,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+#叫静态文件访问路径
 STATIC_URL = '/static/'
+#静态文件存储路径
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
 #设置浏览器关闭时,session失效
 SESSION_EXPIRE_AT_BROWSER_CLOSE =True
